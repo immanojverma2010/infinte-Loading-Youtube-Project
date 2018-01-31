@@ -7,7 +7,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
   devServer: {
     historyApiFallback: true,
-    hot: true,
+    hotOnly: true,
     inline: true,
     progress: true,
     contentBase: './',
@@ -16,12 +16,12 @@ module.exports = {
   entry: [
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:8080',
-    path.resolve(__dirname, 'src/index.js')
+    path.resolve(__dirname, 'src')
   ],
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: './bundle.js'
   },
   module: {
     loaders: [{
@@ -37,6 +37,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({url: 'http://localhost:8080' })
+
+    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+
   ]
 };

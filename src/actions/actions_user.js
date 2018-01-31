@@ -26,11 +26,10 @@ export function fetchUsers() {
 // }
 
 const response = axios.get(ROOT_URL);
-store.dispatch(
- {
+return {
   type: FETCH_USERS,
   payload: response
-});
+}
 
 }
 
